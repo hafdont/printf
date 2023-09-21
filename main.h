@@ -3,6 +3,7 @@
 
 #include <stdarg.h>
 #include <stdio.h>
+#include <stddef.h>
 #include <unistd.h>
 /*flags*/
 typedef struct flags
@@ -11,6 +12,9 @@ typedef struct flags
 	int space;
 	int hash;
 } flags_t;
+
+/*Convert an unsigned long integer to a hexadecimal string.*/
+char *convert_to_hex(unsigned long int n);
 
 /*putchar function*/
 
