@@ -2,7 +2,7 @@
 #include <unistd.h>
 
 /**
- * _putchar - writes the character c 
+ * _putchar - writes the character c
  * @c: The characters to print in the 1024 buffer
  * Return:  1 on success ,-ve number on error
  */
