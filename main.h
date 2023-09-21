@@ -35,6 +35,10 @@ int print_address(va_list l, flags_t *f);
 
 /* Handle the following conversion specifier: p.*/
 int print_pointer(va_list args, flags_t *flags);
+/*task14*/
+char rot13_char(char c);
 
+/*tsk14*/
+int my_printf(const char *format, ...);
 
 #endif
