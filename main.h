@@ -4,6 +4,13 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <unistd.h>
+/*flags*/
+typedef struct flags
+{
+	int plus;
+	int space;
+	int hash;
+} flags_t;
 
 /*putchar function*/
 
