@@ -22,5 +22,8 @@ va_list list, char buffer[], int flags, int width, int precision, int size);
 /*prints address of input in hexa form*/
 int print_address(va_list l, flags_t *f);
 
+/* Handle the following conversion specifier: p.*/
+int print_pointer(va_list args, flags_t *flags);
+
 
 #endif
