@@ -1,4 +1,8 @@
 #include "main.h"
+#include <stdarg.h>
+#include <stdio.h>
+#include <stddef.h>
+#include <unistd.h>
 
 /**
  * print_pointer - Prints a pointer's address (p) in hexadecimal format.
