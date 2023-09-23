@@ -72,6 +72,14 @@ int _printf(const char *format, ...)
 
 				_write_str(s, &char_count);
 			}
+			else if (*format == 'd' || *format == 'i')
+			{
+				int n = va_arg(args, int);
+				char num_str[12];
+				snprintf(num_str, sizeof(num_str), "&d", n);
+				_write_str(num_str, &char_count);
+			}
+
 			else if (*format == '%')
 			{
 				_write_char('%', &char_count);
