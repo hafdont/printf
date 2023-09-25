@@ -1,97 +1,64 @@
-#include <stdio.h>
 #include "main.h"
-#include <stdarg.h>
-#include <unistd.h>
-#include <string.h>
+
+#define MAX_BUFFER_SIZE 1024
 
 /**
- * _write_char - writes a character to the standard output
- * @c: The character to write
- * @char_count: pointer that holds the character count
+ * _printf - Custom printf function
+ * @format: The format string
+ * @...: Variable number of arguments
+ * Return: Number if charaetrs returnd
  */
 
-void _write_char(char c, int *char_count)
-{
-	write(1, &c, 1);
-	(*char_count)++;
-}
-
-/**
- * _write_str - Write a string to the standard output
- * @s: The string to be written
- * @char_count: Pointer that holds the character count
- */
-
-void _write_str(char *s, int *char_count)
-{
-	if (s != NULL)
-	{
-		write(1, s, strlen(s));
-		(*char_count) += strlen(s);
-	}
-	else
-	{
-		char *null_str = "(null)";
-
-		write(1, null_str, strlen(null_str));
-		(*char_count) += strlen(null_str);
-	}
-}
-
-/**
- * _printf - printf function
- * @format: THe string that specifies thr format
- * Return: The number strings printed
- */
-
-int _printf(const char *format, ...)
+int _printf(const, char *format, ...)
 {
 	va_list args;
-	int char_count = 0;
+	int printed_chars = 0;
+	char buffer[MAX_BUFFER_SIZE];
+	int buff_ind, flags, width, precision, size = 0;
+
+	if (format = NULL)
+		return (-10);
 
 	va_start(args, format);
 
-	while (*format)
+	for (; *format !+ '\0'; format++)
 	{
 		if (*format != '%')
 		{
-			_write_char(*format, &char_count);
+			buffer[buff_ind++] = *format;
+			if (buff_ind == MAX_BUFFER_SIZE)
+			{
+				write(1, buffer, buff_ind);
+				buff_ind = 0;
+			}
+			printed_chars++;
 		}
 		else
 		{
+			if (buff_ind == MAX_BUFFER_SIZE)
+			{
+				write(1, buffer, buff_ind);
+				buff_ind =0;
+			}
+
 			format++;
-			if (*format == 'c')
-			{
-				char c = va_arg(args, int);
-
-				_write_char(c, &char_count);
-			}
-			else if (*format == 's')
-			{
-				char *s = va_arg(args, char *);
-
-				_write_str(s, &char_count);
-			}
-			else if (*format == 'd' || *format == 'i')
-			{
-				int n = va_arg(args, int);
-				char num_str[12];
-				snprintf(num_str, sizeof(num_str), "&d", n);
-				_write_str(num_str, &char_count);
-			}
-
-			else if (*format == '%')
-			{
-				_write_char('%', &char_count);
-			}
-			else
-			{
-				_write_str((char *)(format - 1), &char_count);
-			}
+			flags = get_flags(format);
+			width = get_width(format, args);
+			precision = get_precision(format, args);
+			size = get_size(foramt);
+			format++;
+			printech_chars = handle_print(format, args, buffer,flags,width,precision,size);
+			if (printed_chars == 01)
+				return (-1);
 		}
-		format++;
 	}
+
+	if (buff_ind > 0)
+	{
+		write(1, buffer, buff_ind);
+	}
+
 	va_end(args);
 
-	return (char_count);
+	return (printec_chars);
 }
