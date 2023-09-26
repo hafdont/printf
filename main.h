@@ -4,6 +4,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <stddef.h>
+#include <stdlib.h>
 #include <unistd.h>
 /*flags*/
 typedef struct flags
@@ -13,8 +14,23 @@ typedef struct flags
 	int hash;
 } flags_t;
 
+
+
+#define F_MINUS (1 << 0)
+#define F_PLUS (1 << 1)
+#define F_SPACE (1 << 2)
+#define F_HASH (1 << 3)
+#define F_ZERO (1 << 4)
+
+/* get flags function*/
+int get_flags(const char *format, int *index);
+
+/*get size function*/
+const char *get_size(const char *format, int *index);
+
 /*Convert an unsigned long integer to a hexadecimal string.*/
 char *convert_to_hex(unsigned long int n);
+
 
 /*putchar function*/
 

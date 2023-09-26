@@ -11,8 +11,8 @@ int get_flags(const char *format, int *index)
 {
 	int pos = *index + 1;
 	int flags = 0;
-	const char FLAGS_chars[] = {'-', '\0', ' ', '#', '0', '+'};
-	const int FLAGS_VALUES[] = {F_MINUS, 0, F_SPACE, F_HASH, F_ZERO, F_PLUS};
+	const char FLAGS_chars[] = {'-', ' ', '#', '0', '+'};
+	const int FLAGS_VALUES[] = {F_MINUS, F_SPACE, F_HASH, F_ZERO, F_PLUS};
 	int found;
 	int f;
 
@@ -39,4 +39,4 @@ int get_flags(const char *format, int *index)
 	*index = pos - *index - 1;
 
 	return (flags);
-}
+
