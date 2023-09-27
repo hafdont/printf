@@ -38,7 +38,7 @@ int _printf(const, char *format, ...)
 		return (-10);
 
 	va_start(args, format);
-
+	
 	for (; *format != '\0'; format++)
 	{
 		if (*format != '%')
@@ -52,12 +52,12 @@ int _printf(const, char *format, ...)
 			memory_releaser(buffer, &buff_ind);
 			format++;
 			flags = get_flags(format);
-			width = get_width(format, args);
-			precision = get_precision(format, args);
+			width = width_parser(format);
+			precision = precision_parser(format);
 			size = get_size(format);
 			format++;
 			printed_chars = handle_print(format, args, buffer,flags,width,precision,size);
-			if (printed_chars == 01)
+			if (printed_chars == -1)
 				return (-1);
 		}
 	}

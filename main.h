@@ -28,6 +28,12 @@ int get_flags(const char *format, int *index);
 /*get size function*/
 const char *get_size(const char *format, int *index);
 
+/*precision_parser*/
+int precision_parser(const char *format, int *index);
+
+/*width_parser*/
+int width_parser(const char *format, int *index);
+
 /*Convert an unsigned long integer to a hexadecimal string.*/
 char *convert_to_hex(unsigned long int n);
 
